@@ -36,7 +36,7 @@ existing.start_at < new.end_at
 AND existing.end_at > new.start_at
 ```
 
-This check only considers reservations where `cancelled_at` is null.
+This check only considers reservations where `status` is `active`.
 
 Using strict `<` and `>` allows back-to-back reservations where one ends exactly when another begins, which matches the intended behavior.
 
