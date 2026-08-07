@@ -13,7 +13,7 @@ Trade-off: a separate API would be more appropriate for a larger system or one w
 The data model is intentionally simple with only two main tables:
 
 - `resources`: `name`, `type`, `status`, `capacity`
-- `reservations`: `resource_id`, `customer_name`, `customer_email`, `start_at`, `end_at`, `notes`, `cancelled_at`
+- `reservations`: `resource_id`, `customer_name`, `customer_email`, `start_at`, `end_at`, `notes`, `status`
 
 The app assumes that `capacity` means the number of identical units of a resource that can be reserved at the same time. For example, a capacity of `2` means two concurrent reservations are allowed for the same period.
 
@@ -25,7 +25,7 @@ The implementation was kept intentionally simple and user-friendly rather than o
 
 ### Cancellation strategy
 
-Cancelling a reservation sets `cancelled_at` instead of deleting the row. This preserves history and makes overlap checking easier by excluding cancelled reservations from conflict checks.
+Cancelling a reservation sets `status` to `cancelled` instead of deleting the row. This preserves history and makes overlap checking easier by excluding cancelled reservations from conflict checks.
 
 ## Overlap check
 

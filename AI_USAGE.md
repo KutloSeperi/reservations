@@ -6,6 +6,8 @@
 
 ## What it was used for
 
+Before consulting AI, I already understood the rules and core required functionality. I knew this was a small Laravel MVC project, so the architecture was clear in my head and I could see how the controller, model, and view flow should work. I also knew the CRUD behavior had to be solid and that the app did not need many tables.
+
 I used AI to help interpret the brief, focus the implementation, and make architectural choices. Specifically, I used it to:
 
 - Identify the most important requirements in the brief, especially overlap logic and test coverage.
@@ -17,6 +19,8 @@ I used AI to help interpret the brief, focus the implementation, and make archit
 - Decide against using a queue for reservation processing.
 - Resolve setup issues such as the Laravel installer not being available and switching from HTTPS to SSH for GitHub.
 
+For the database schema specifically, I designed the tables and fields myself first, deciding on the table names, columns, types, and relationships, then gave Claude clear instructions on the exact schema I wanted, including meaningful, readable column and variable names rather than generic ones, and had it generate the migration files. I ran those migrations directly, since the actual schema design was the decision that mattered, and the migration syntax itself was low-risk to generate once the schema was fully specified.
+
 ## Prompts that shaped the solution
 
 1. "Should I use Inertia or a REST API with a separate Vue frontend for this size of project?"
@@ -25,9 +29,13 @@ I used AI to help interpret the brief, focus the implementation, and make archit
 
 3. "Do I need a users table and a separate bookings table for this brief?"
 
+4. I gave Claude the exact schema I wanted, including specific, meaningful column and variable names, and asked it to generate the matching migration and model files.
+
 ## How I verified AI suggestions
 
 I did not accept AI-generated ideas without validation. After implementing the overlap check and validation rules, I wrote the required tests and ran `php artisan test`. The initial test run exposed a real issue: `Resource::factory()` was not available because the `Resource` model was missing the `HasFactory` trait. After fixing that, all four required tests passed.
+
+For the schema and migrations, verification was running `php artisan migrate` and confirming the resulting tables matched the schema and naming I had specified, rather than accepting the generated files without checking them against my own design.
 
 ## Suggestion rejected or changed
 

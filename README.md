@@ -60,12 +60,12 @@ Clone the repo:
 
 ```bash
 # HTTPS
-git clone https://github.com/KutloSeperi/reservation.git
+git clone https://github.com/KutloSeperi/reservations.git
 
 # SSH
-git clone git@github.com:KutloSeperi/reservation.git
+git clone git@github.com:KutloSeperi/reservations.git
 
-cd reservation
+cd reservations
 ```
 
 Install dependencies and prepare the environment:
