@@ -35,7 +35,7 @@ The main business rule is that a resource cannot have overlapping active reserva
 - Reservation cancellation works.
 - Seed data includes a set of named resources to demonstrate the app.
 
-This was my first time using Inertia with Laravel and Vue together; I spent about 30 minutes learning how Inertia works before implementing the app.
+This was my first time using Inertia with Laravel and Vue together; I spent almost 30 minutes reading how Inertia works before implementing the app. That saved me from wiring up Axios or a separate API, but it also means this is a better fit for a SPA-style workflow.
 
 ## Stack
 
@@ -50,7 +50,7 @@ This was my first time using Inertia with Laravel and Vue together; I spent abou
 
 ## Why Inertia
 
-For this project and timebox, Inertia was a good fit because it allows Laravel to render pages with Vue components without building a separate REST API. That saved time and kept the backend and frontend tightly integrated. If this were a larger system or needed to support other client apps, a REST API would be the better choice.
+For this project and timebox, Inertia was a good fit because it lets Laravel render pages with Vue components without building a separate REST API. That saved time and kept the backend and frontend tightly integrated. I did not have to wire Axios or an external API into the app, and I avoided the old AJAX-style flow of `url`, `data`, `success`, and callback-based response handling. If this were a larger system or needed to support other client apps, a REST API would be the better choice.
 
 ## Setup and environment
 
